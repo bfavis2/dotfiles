@@ -161,10 +161,16 @@ require('lazy').setup({
     'sainnhe/gruvbox-material',
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'gruvbox-material'
+     vim.cmd.colorscheme 'gruvbox-material'
     end,
   },
-
+  {
+    'arturgoms/moonbow.nvim',
+    priority = 1000,
+    --config = function()
+     -- vim.cmd.colorscheme 'moonbow'
+    --end,
+  },
   {
     'luisiacc/gruvbox-baby',
     --config = function()
@@ -179,7 +185,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'onedark',
+        theme = 'gruvbox-material',
         component_separators = '|',
         section_separators = '',
       },
