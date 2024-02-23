@@ -41,9 +41,6 @@ vim.keymap.set("i", "<C-c>", "<Esc>")
 -- not sure
 vim.keymap.set("n", "Q", "<nop>")
 
--- TODO needs to work, switch projects
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-
 -- format document
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
@@ -69,3 +66,12 @@ end)
 vim.keymap.set("n", "<leader><leader>", function()
 	vim.cmd("so")
 end)
+
+-- Keymaps for better default experience
+-- See `:help vim.keymap.set()`
+vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+
+-- Remap for dealing with word wrap
+vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+

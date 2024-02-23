@@ -119,5 +119,8 @@ alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias icat="kitty +kitten icat"
 alias s="kitty +kitten ssh"
 
+# use zoxide instead of cd
+# https://www.youtube.com/watch?v=aghxkpyRVDY&ab_channel=DreamsofAutonomy
+eval "$(zoxide init --cmd cd zsh)"
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
