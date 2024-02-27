@@ -15,21 +15,89 @@ return {
     'nvim-telescope/telescope-ui-select.nvim',
     'nvim-tree/nvim-web-devicons',
   },
-  config = function(_, opts)
+  config = function()
+    local actions = require("telescope.actions")
+
     -- See `:help telescope` and `:help telescope.setup()`
-    require('telescope').setup {
+    require('telescope').setup({
       pickers = {
         find_files = {
           hidden = true
         }
       },
       defaults = {
-        mappings = {
-          i = {
-            ['<C-u>'] = false, -- clears the prompt instead of scrolling previewer
-            ['<C-d>'] = false,
-          },
+         mappings = {
+	  i = {
+	    ["<C-n>"] = actions.cycle_history_next,
+	    ["<C-p>"] = actions.cycle_history_prev,
+
+	    ["<C-j>"] = actions.move_selection_next,
+	    ["<C-k>"] = actions.move_selection_previous,
+
+	    ["<C-c>"] = actions.close,
+
+	    ["<Down>"] = actions.move_selection_next,
+	    ["<Up>"] = actions.move_selection_previous,
+
+	    ["<CR>"] = actions.select_default,
+	    ["<C-x>"] = actions.select_horizontal,
+	    ["<C-v>"] = actions.select_vertical,
+	    ["<C-t>"] = actions.select_tab,
+
+	    ["<C-u>"] = actions.preview_scrolling_up,
+	    ["<C-d>"] = actions.preview_scrolling_down,
+
+	    ["<PageUp>"] = actions.results_scrolling_up,
+	    ["<PageDown>"] = actions.results_scrolling_down,
+
+	    ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
+	    ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
+	    ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
+	    ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+	    ["<C-l>"] = actions.complete_tag,
+	    ["<C-_>"] = actions.which_key, -- keys from pressing <C-/>
+	  },
+
+	  n = {
+	    ["<esc>"] = actions.close,
+	    ["<CR>"] = actions.select_default,
+	    ["<C-x>"] = actions.select_horizontal,
+	    ["<C-v>"] = actions.select_vertical,
+	    ["<C-t>"] = actions.select_tab,
+
+	    ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
+	    ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
+	    ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
+	    ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+
+	    ["j"] = actions.move_selection_next,
+	    ["k"] = actions.move_selection_previous,
+	    ["H"] = actions.move_to_top,
+	    ["M"] = actions.move_to_middle,
+	    ["L"] = actions.move_to_bottom,
+
+	    ["<Down>"] = actions.move_selection_next,
+	    ["<Up>"] = actions.move_selection_previous,
+	    ["gg"] = actions.move_to_top,
+	    ["G"] = actions.move_to_bottom,
+
+	    ["<C-u>"] = actions.preview_scrolling_up,
+	    ["<C-d>"] = actions.preview_scrolling_down,
+
+	    ["<PageUp>"] = actions.results_scrolling_up,
+	    ["<PageDown>"] = actions.results_scrolling_down,
+
+	    ["?"] = actions.which_key,
+	  },
         },
+	file_ignore_patterns = {
+						"node_modules",
+						"yarn.lock",
+						".git",
+						".sl",
+						"_build",
+						".next",
+					}
       },
       extensions = {
         fzf = {
@@ -37,9 +105,12 @@ return {
           override_generic_sorter = true, -- override the generic sorter
           override_file_sorter = true,    -- override the file sorter
           case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
-        }
-      }
-    }
+        },
+	["ui-select"] = {
+            require("telescope.themes").get_dropdown({}),
+          },
+      },
+  })
 		local builtin = require('telescope.builtin') 
 		-- See `:help telescope.builtin`
 		vim.keymap.set('n', '<leader>?', builtin.oldfiles, { desc = '[?] Find recently opened files' })
@@ -61,6 +132,7 @@ return {
 		vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
 
 
-			require('telescope').load_extension('fzf')
+		    require('telescope').load_extension('fzf')
+		    require('telescope').load_extension('ui-select')
 		  end
 }
