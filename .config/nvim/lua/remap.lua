@@ -1,4 +1,4 @@
-vim.g.mapleader = " "
+-- return to netrw directory tree
 vim.keymap.set("n", "<leader>m", vim.cmd.Ex)
 
 -- move highlighted lines up and down
@@ -44,34 +44,51 @@ vim.keymap.set("n", "Q", "<nop>")
 -- format document
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
+-- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
+-- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
+-- is not what someone will guess without a bit more experience.
+--
+-- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
+-- or just use <C-\><C-n> to exit terminal mode
+vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+
 -- quick fix shortcuts
-vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
-vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
-vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
-vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
+-- https://vimdoc.sourceforge.net/htmldoc/quickfix.html
+-- vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
+-- vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
+-- vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
+-- vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
+
+-- vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
+-- vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
+-- vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
+-- vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
 -- start replacing the word at the cursor in the whole document
-vim.keymap.set("n", "<leader>sc", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-	{ desc = "Current Word Replace Everywhere" })
+vim.keymap.set(
+	"n",
+	"<leader>sc",
+	[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+	{ desc = "Current Word Replace Everywhere" }
+)
 
 -- makes the current file executable
 vim.keymap.set("n", "<leader>z", "<cmd>!chmod +x %<CR>", { silent = true })
 
 -- clear highlights when searching
-vim.keymap.set("n", "<leader>h", function()
+vim.keymap.set("n", "<Esc>", function()
 	vim.cmd("noh")
 end)
 
 -- sources the file??
-vim.keymap.set("n", "<leader><leader>", function()
-	vim.cmd("so")
-end)
+-- vim.keymap.set("n", "<leader><leader>", function()
+-- 	vim.cmd("so")
+-- end)
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
-vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 
 -- Remap for dealing with word wrap
-vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-
+vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })

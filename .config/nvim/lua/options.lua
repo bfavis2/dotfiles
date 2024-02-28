@@ -8,13 +8,13 @@ vim.opt.hlsearch = true
 vim.wo.number = true
 
 -- Enable mouse mode
-vim.opt.mouse = 'a'
+vim.opt.mouse = "a"
 
 -- don't use swapfile
 vim.opt.swapfile = false
 
 -- autocomplete options
-vim.opt.completeopt = 'menuone,noinsert,noselect'
+vim.opt.completeopt = "menuone,noinsert,noselect"
 
 -- Sync clipboard between OS and Neovim. neovim
 --  Remove this option if you want your OS clipboard to remain independent.
@@ -32,9 +32,9 @@ vim.opt.breakindent = true
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
-vim.opt.foldmethod = 'marker'
+vim.opt.foldmethod = "marker"
 
-vim.opt.colorcolumn = '80'
+vim.opt.colorcolumn = "80"
 -- Save undo history
 vim.opt.undofile = true
 
@@ -48,9 +48,7 @@ vim.opt.smartcase = true
 -- change tabs to 4 spaces instead of 8
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
-
--- Keep signcolumn on by default
-vim.wo.signcolumn = 'yes'
+vim.shiftwidth = 4
 
 -- Decrease update time
 vim.opt.updatetime = 250
@@ -70,3 +68,12 @@ vim.opt.cursorline = true
 
 -- Always keep 8 lines above/below cursor unless at start/end of file
 vim.opt.scrolloff = 10
+
+-- Sets how neovim will display certain whitespace in the editor.
+--  See :help 'list'
+--  and :help 'listchars'
+vim.opt.list = true
+vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+
+-- Preview substitutions live, as you type!
+vim.opt.inccommand = "split"
