@@ -122,5 +122,10 @@ alias s="kitty +kitten ssh"
 # use zoxide instead of cd
 # https://www.youtube.com/watch?v=aghxkpyRVDY&ab_channel=DreamsofAutonomy
 eval "$(zoxide init --cmd cd zsh)"
+
+# autocomplete keybind changing tab
+bindkey '\t' menu-select "$terminfo[kcbt]" menu-select
+bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
