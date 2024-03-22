@@ -15,6 +15,7 @@ return {
 		-- - sd'   - [S]urround [D]elete [']quotes
 		-- - sr)'  - [S]urround [R]eplace [)] [']
 		require("mini.surround").setup()
+		require("mini.pairs").setup()
 
 		--  Check out: https://github.com/echasnovski/mini.nvim
 	end,

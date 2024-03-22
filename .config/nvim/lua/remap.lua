@@ -3,8 +3,8 @@ vim.keymap.set("n", "<leader>m", vim.cmd.Ex)
 
 -- move highlighted lines up and down
 -- automatically indents too
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Switch line selection downwards"})
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Switch line selection upwards"})
 
 -- appends line below to current line without moving cursor to the end
 vim.keymap.set("n", "J", "mzJ`z")
@@ -28,11 +28,11 @@ vim.keymap.set({ "n", "v" }, "<leader>p", [["+p]])
 vim.keymap.set("n", "<leader>P", [["+P]])
 
 -- regular delete doesn't override the default buffer
-vim.keymap.set({ "n", "v" }, "<leader>d", "d")
+-- vim.keymap.set({ "n", "v" }, "<leader>d", "d")
 vim.keymap.set({ "n", "v" }, "d", [["_d]])
-vim.keymap.set({ "n", "v" }, "<leader>x", "x")
+vim.keymap.set({ "n", "v" }, "<leader>x", "d") -- original cut functionality
 vim.keymap.set({ "n", "v" }, "x", [["_x]])
-vim.keymap.set({ "n", "v" }, "<leader>c", "c") -- currently overwrriten
+-- vim.keymap.set({ "n", "v" }, "<leader>c", "c") -- currently overwrriten
 vim.keymap.set({ "n", "v" }, "c", [["_c]])
 
 -- elimantes the slight difference between <C-c> and <Esc>
@@ -42,7 +42,7 @@ vim.keymap.set("i", "<C-c>", "<Esc>")
 vim.keymap.set("n", "Q", "<nop>")
 
 -- format document
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+vim.keymap.set("n", "<leader>df", vim.lsp.buf.format, { desc = '[D]ocument [F]ormat'} )
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -80,11 +80,6 @@ vim.keymap.set("n", "<Esc>", function()
 	vim.cmd("noh")
 end)
 
--- sources the file??
--- vim.keymap.set("n", "<leader><leader>", function()
--- 	vim.cmd("so")
--- end)
-
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
@@ -92,3 +87,12 @@ vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 -- Remap for dealing with word wrap
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
+-- delete buffer
+vim.keymap.set("n", "<leader>bd", "<cmd>bd<CR>", { desc = "[B]uffer [D]elete" })
+
+-- diagnostics
+vim.keymap.set('n', '<leader>dp', vim.diagnostic.goto_prev, { desc = 'Go to [P]revious [D]iagnostic message' })
+vim.keymap.set('n', '<leader>dn', vim.diagnostic.goto_next, { desc = 'Go to [N]ext [D]iagnostic message' })
+vim.keymap.set('n', '<leader>de', vim.diagnostic.open_float, { desc = 'Show [D]iagnostic [E]rror messages' })
+vim.keymap.set('n', '<leader>dq', vim.diagnostic.setloclist, { desc = 'Open [D]iagnostic [Q]uickfix list' })

@@ -42,6 +42,10 @@ return {
 				end,
 			},
 			completion = { completeopt = "menu,menuone,noinsert" },
+			-- enable ghost text
+			experimental = {
+				ghost_text = true,
+			},
 
 			-- For an understanding of why these mappings were
 			-- chosen, you will need to read `:help ins-completion`
@@ -57,6 +61,7 @@ return {
 				--  This will auto-import if your LSP supports it.
 				--  This will expand snippets if the LSP sent a snippet.
 				["<C-y>"] = cmp.mapping.confirm({ select = true }),
+				["<Tab>"] = cmp.mapping.confirm({ select = true }),
 
 				-- Manually trigger a completion from nvim-cmp.
 				--  Generally you don't need this, because nvim-cmp will display
@@ -71,21 +76,23 @@ return {
 				--
 				-- <c-l> will move you to the right of each of the expansion locations.
 				-- <c-h> is similar, except moving you backwards.
-				-- ["<C-l>"] = cmp.mapping(function()
-				-- 	if luasnip.expand_or_locally_jumpable() then
-				-- 		luasnip.expand_or_jump()
-				-- 	end
-				-- end, { "i", "s" }),
-				-- ["<C-h>"] = cmp.mapping(function()
-				-- 	if luasnip.locally_jumpable(-1) then
-				-- 		luasnip.jump(-1)
-				-- 	end
-				-- end, { "i", "s" }),
+				["<C-l>"] = cmp.mapping(function()
+					if luasnip.expand_or_locally_jumpable() then
+						luasnip.expand_or_jump()
+					end
+				end, { "i", "s" }),
+
+				["<C-h>"] = cmp.mapping(function()
+					if luasnip.locally_jumpable(-1) then
+						luasnip.jump(-1)
+					end
+				end, { "i", "s" }),
 			}),
 			sources = {
 				{ name = "nvim_lsp" },
 				{ name = "luasnip" },
 				{ name = "path" },
+				{ name = "codeium" },
 			},
 		})
 	end,

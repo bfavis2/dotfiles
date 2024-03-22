@@ -2,6 +2,7 @@ return {
 	"nvim-treesitter/nvim-treesitter",
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter-textobjects",
+		"windwp/nvim-ts-autotag",
 	},
 	build = ":TSUpdate",
 	config = function()
@@ -43,6 +44,9 @@ return {
 					node_decremental = "<M-space>",
 				},
 			},
+			-- https://github.com/windwp/nvim-ts-autotag
+			-- automatically closes html tags
+			autotag = { enable = true },
 			-- textobjects = {
 			-- 	select = {
 			-- 		enable = true,
