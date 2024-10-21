@@ -118,6 +118,9 @@ alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias icat="kitty +kitten icat"
 alias s="kitty +kitten ssh"
+alias nvim='NVIM_APPNAME="nvim-bfavis" \nvim'
+alias nvim-lazy='NVIM_APPNAME="nvim-lazyvim" \nvim'
+
 
 # use zoxide instead of cd
 # https://www.youtube.com/watch?v=aghxkpyRVDY&ab_channel=DreamsofAutonomy
