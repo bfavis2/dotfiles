@@ -5,6 +5,9 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -54,7 +57,7 @@ zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 # You can also set it to another string to have that shown instead of the default red dots.
 # e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
 # Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-COMPLETION_WAITING_DOTS="true"
+#COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -83,8 +86,8 @@ plugins=(
 	aws
 	docker
 	you-should-use
-	zsh-vi-mode
-	#zsh-autosuggestions
+#	zsh-vi-mode
+	zsh-autosuggestions
 	zsh-syntax-highlighting
 	zsh-autocomplete
 )
@@ -92,6 +95,15 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+
+# history setup
+HISTFILE=$HOME/.zhistory
+SAVEHIST=1000
+HISTSIZE=999
+setopt share_history 
+setopt hist_expire_dups_first
+setopt hist_ignore_dups
+setopt hist_verify
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -115,13 +127,16 @@ source $ZSH/oh-my-zsh.sh
 #
 # Example aliases
 alias zshconfig="nvim ~/.zshrc"
+alias reloadzsh="source ~/.zshrc"
+alias ls="eza --icons=always"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias icat="kitty +kitten icat"
 alias s="kitty +kitten ssh"
 alias nvim='NVIM_APPNAME="nvim-bfavis" \nvim'
 alias nvim-lazy='NVIM_APPNAME="nvim-lazyvim" \nvim'
 
-
+eval $(thefuck --alias)
+eval $(thefuck --alias fk)
 # use zoxide instead of cd
 # https://www.youtube.com/watch?v=aghxkpyRVDY&ab_channel=DreamsofAutonomy
 eval "$(zoxide init --cmd cd zsh)"
@@ -130,5 +145,14 @@ eval "$(zoxide init --cmd cd zsh)"
 bindkey '\t' menu-select "$terminfo[kcbt]" menu-select
 bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# fix the scrolling through history with arrow key issue
+() {
+  while (( ARGC )); do
+    bindkey -M $1 '^[OA' up-line-or-history
+    bindkey -M $1 '^[[A' up-line-or-history
+    bindkey -M $1 '^[OB' down-line-or-history
+    bindkey -M $1 '^[[B' down-line-or-history
+    shift
+  done
+} emacs viins vicmd
+
