@@ -3,6 +3,7 @@ local session_manager = require("wezterm-session-manager/session-manager")
 local smart_splits = wezterm.plugin.require("https://github.com/mrjones2014/smart-splits.nvim")
 local config = wezterm.config_builder()
 
+config.enable_wayland = false
 -- Enhanched Session Manager events
 -- https://github.com/danielcopper/wezterm-session-manager
 wezterm.on("save_session", function(window)
@@ -47,7 +48,8 @@ smart_splits.apply_to_config(config, {
 })
 
 -- appearance
-config.font = wezterm.font("JetBrains Mono")
+config.font = wezterm.font("MesloLGS Nerd Font")
+-- config.font = wezterm.font("JetBrainsMono Nerd Font")
 -- config.color_scheme = "Gruvbox Material (Gogh)"
 config.color_scheme = "gruvbox_material_dark_hard"
 config.color_schemes = {

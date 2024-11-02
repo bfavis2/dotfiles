@@ -32,6 +32,7 @@ export I3_CONFIG="$XDG_CONFIG_HOME/i3"
 export VIMCONFIG="$XDG_CONFIG_HOME/nvim"
 export GIMP_VERSION="2.10"
 export SCREENSHOT="$HOME/Documents/images/screenshots"
+export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 
 # Man pages
 export MANPAGER='nvim +Man!'
