@@ -99,4 +99,4 @@ export PATH="$GOBIN:$PATH"                                          # GOBIN
 export PATH="$NPM_BIN:$PATH"                                        # NPM
 
 # Cloud
-source $CLOUD/dotfiles/common/env
+#source $CLOUD/dotfiles/common/env

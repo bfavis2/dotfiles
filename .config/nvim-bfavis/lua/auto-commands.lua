@@ -101,6 +101,19 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 	end,
 })
 
+-- Hyprlang LSP
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+	pattern = { "*.hl", "hypr*.conf" },
+	callback = function(event)
+		print(string.format("starting hyprls for %s", vim.inspect(event)))
+		vim.lsp.start({
+			name = "hyprlang",
+			cmd = { "hyprls" },
+			root_dir = vim.fn.getcwd(),
+		})
+	end,
+})
+
 -- Auto create dir when saving a file, in case some intermediate directory does not exist
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 	group = augroup("auto_create_dir"),

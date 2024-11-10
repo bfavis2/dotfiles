@@ -56,6 +56,7 @@ bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
   done
 } emacs viins vicmd
 
+eval "$(zellij setup --generate-auto-start zsh)"
 eval "$(starship init zsh)"
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fastfetch

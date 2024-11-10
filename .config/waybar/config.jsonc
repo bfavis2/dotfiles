@@ -13,7 +13,6 @@
                 "hyperland/window"
         ],
         "modules-right": [
-                "mpd",
                 "idle_inhibitor",
                 "pulseaudio",
                 "network",
@@ -21,14 +20,9 @@
                 "cpu",
                 "memory",
                 "temperature",
-                "backlight",
-                "keyboard-state",
-                "sway/language",
                 "battery",
-                "battery#bat2",
                 "clock",
-                "tray",
-                "custom/power"
+                "tray"
         ],
         // Modules configuration
         "hyprland/workspaces": {

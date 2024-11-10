@@ -3,6 +3,7 @@ vim.g.mapleader = " "
 require("remap")
 require("options")
 require("auto-commands")
+require("filetypes")
 
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
