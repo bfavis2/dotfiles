@@ -100,3 +100,4 @@ export PATH="$NPM_BIN:$PATH"                                        # NPM
 
 # Cloud
 #source $CLOUD/dotfiles/common/env
+. "$HOME/.cargo/env"

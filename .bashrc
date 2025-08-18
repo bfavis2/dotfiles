@@ -31,3 +31,4 @@ alias s="kitty +kitten ssh"
 
 export EDITOR='nvim'
 export VISUAL='code'
+. "$HOME/.cargo/env"

@@ -1,18 +1,25 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-plugins=(
-	git
-	1password
-	aws
-	docker
-	you-should-use
-#	zsh-vi-mode
-	zsh-autosuggestions
-	zsh-syntax-highlighting
-	zsh-autocomplete
-)
-
+# In case a command is not found, try to find the package that has it
+function command_not_found_handler {
+    local purple='\e[1;35m' bright='\e[0;1m' green='\e[1;32m' reset='\e[0m'
+    printf 'zsh: command not found: %s\n' "$1"
+    local entries=( ${(f)"$(/usr/bin/pacman -F --machinereadable -- "/usr/bin/$1")"} )
+    if (( ${#entries[@]} )) ; then
+        printf "${bright}$1${reset} may be found in the following packages:\n"
+        local pkg
+        for entry in "${entries[@]}" ; do
+            local fields=( ${(0)entry} )
+            if [[ "$pkg" != "${fields[2]}" ]]; then
+                printf "${purple}%s/${bright}%s ${green}%s${reset}\n" "${fields[1]}" "${fields[2]}" "${fields[3]}"
+            fi
+            printf '    /%s\n' "${fields[4]}"
+            pkg="${fields[2]}"
+        done
+    fi
+    return 127
+}
 
 # history setup
 HISTFILE=$HOME/.zhistory
@@ -29,11 +36,26 @@ source /usr/share/zsh/plugins/zsh-you-should-use/you-should-use.plugin.zsh
 
 alias zshconfig="nvim ~/dotfiles/.config/zsh/.zshrc"
 alias reloadzsh="source ~/.config/zsh/.zshrc"
-alias ls="eza --icons=always"
+alias c='clear' # clear terminal
+alias ls='eza -lh --icons=auto' # long list
+alias l='eza -1 --icons=auto' # short list
+alias ll='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
+alias ld='eza -lhD --icons=auto' # long list dirs
+alias lt='eza --icons=auto --tree' # list folder as tree
 alias icat="kitty +kitten icat"
 alias s="kitty +kitten ssh"
 alias nvim='NVIM_APPNAME="nvim-bfavis" \nvim'
 alias nvim-lazy='NVIM_APPNAME="nvim-lazyvim" \nvim'
+
+# Directory navigation shortcuts
+alias ..='cd ..'
+alias ...='cd ../..'
+alias .3='cd ../../..'
+alias .4='cd ../../../..'
+alias .5='cd ../../../../..'
+
+# Always mkdir a path (this doesn't inhibit functionality to make a single dir)
+alias mkdir='mkdir -p'
 
 eval $(thefuck --alias)
 eval $(thefuck --alias fk)
