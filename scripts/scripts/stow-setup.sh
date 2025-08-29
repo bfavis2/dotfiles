@@ -1,13 +1,14 @@
 #!/bin/bash
 
 stow -d ~/dotfiles -t ~ \
-  --adopt \
-  --verbose=3 \
+  --adopt --verbose=2 \
   --stow aliases \
   --stow backgrounds \
+  --stow bash \
   --stow btop \
   --stow config-root \
   --stow fastfetch \
+  --stow git \
   --stow hypr \
   --stow kitty \
   --stow nvim-bfavis \

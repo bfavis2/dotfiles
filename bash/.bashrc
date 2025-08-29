@@ -1,34 +1,39 @@
-# .bashrc
+# All the default Omarchy aliases and functions
+# (don't mess with these directly, just overwrite them here!)
+source ~/.local/share/omarchy/default/bash/rc
 
-# Source global definitions
-if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
-fi
+# alias nvim='NVIM_APPNAME="nvim-bfavis" \nvim'
+alias nvim='NVIM_APPNAME="nvim-lazyvim" \nvim'
+alias nvim-bfavis='NVIM_APPNAME="nvim-bfavis" \nvim'
+alias nvim-lazy='NVIM_APPNAME="nvim-lazyvim" \nvim'
 
-# User specific environment
-if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
-then
-    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
-fi
-export PATH
+# Directory navigation shortcuts
+alias ..='cd ..'
+alias ...='cd ../..'
+alias .2='cd ../..'
+alias .3='cd ../../..'
+alias .4='cd ../../../..'
+alias .5='cd ../../../../..'
 
-# Uncomment the following line if you don't like systemctl's auto-paging feature:
-# export SYSTEMD_PAGER=
+# Always mkdir a path (this doesn't inhibit functionality to make a single dir)
+alias mkdir='mkdir -p'
 
-# User specific aliases and functions
-if [ -d ~/.bashrc.d ]; then
-	for rc in ~/.bashrc.d/*; do
-		if [ -f "$rc" ]; then
-			. "$rc"
-		fi
-	done
-fi
+# Add your own exports, aliases, and functions here.
+#
+# Make an alias for invoking commands you use constantly
+# alias p='python'
+#
+# Use VSCode instead of neovim as your default editor
+# export EDITOR="code"
+#
+# Set a custom prompt with the directory revealed (alternatively use https://starship.rs)
+# PS1="\W \[\e]0;\w\a\]$PS1"
 
-unset rc
-
-alias icat="kitty +kitten icat"
-alias s="kitty +kitten ssh"
-
-export EDITOR='nvim'
-export VISUAL='code'
-. "$HOME/.cargo/env"
+# start ssh agent to cache pw
+# eval "$(ssh-agent -s)"
+# if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+#     ssh-agent -t 1h > "$XDG_RUNTIME_DIR/ssh-agent.env"
+# fi
+# if [ ! -f "$SSH_AUTH_SOCK" ]; then
+#     source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
+# fi
