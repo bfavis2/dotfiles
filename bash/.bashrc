@@ -3,7 +3,7 @@
 source ~/.local/share/omarchy/default/bash/rc
 
 # alias nvim='NVIM_APPNAME="nvim-bfavis" \nvim'
-alias nvim='NVIM_APPNAME="nvim-lazyvim" \nvim'
+# alias nvim='NVIM_APPNAME="nvim-lazyvim" \nvim'
 alias nvim-bfavis='NVIM_APPNAME="nvim-bfavis" \nvim'
 alias nvim-lazy='NVIM_APPNAME="nvim-lazyvim" \nvim'
 
