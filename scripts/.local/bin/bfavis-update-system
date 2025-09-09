@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+yay -Syu
+pacman -Qe > packages.txt

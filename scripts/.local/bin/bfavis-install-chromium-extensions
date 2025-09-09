@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 install_chrome_extension() {
   # preferences_dir_path="/opt/google/chrome/extensions"

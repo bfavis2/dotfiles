@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 omarchy-webapp-install "TickTick" https://ticktick.com/webapp/#q/all/tasks https://img.icons8.com/fluent/512/tick-tick.png
 omarchy-webapp-install "Readwise Daily Review" https://readwise.io/dailyreview https://s3.amazonaws.com/readwiseio/2020/11/Group-58.png
