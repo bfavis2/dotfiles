@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-stow -d ~/dotfiles -t ~ \
+stow -d $HOME/dotfiles -t $HOME \
   --verbose=2 \
   --stow aliases \
   --stow backgrounds \

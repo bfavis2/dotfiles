@@ -1,4 +1,16 @@
 #!/usr/bin/env bash
 
-yay -Syu
-pacman -Qe > packages.txt
+CURRENT_DATE=$(date +"%Y%m%d")
+BASE_DIR="${DOTFILES_DIR:-$HOME/dotfiles}"
+FULL_PATH="$BASE_DIR/package-list/$(hostname)"
+
+if [[ ! -d "$FULL_PATH" ]]; then
+  echo "Directory does not exist. Creating: $FULL_PATH"
+  mkdir -p "$FULL_PATH"
+fi
+
+yay -Syu --needed --noconfirm
+
+echo "Saving package list to: $FULL_PATH"
+pacman -Qe >"$FULL_PATH/$CURRENT_DATE-explicit-packages.txt"
+pacman -Q >"$FULL_PATH/$CURRENT_DATE-full-packages.txt"
