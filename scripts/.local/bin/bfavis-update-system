@@ -11,6 +11,8 @@ fi
 
 yay -Syu --needed --noconfirm
 
-echo "Saving package list to: $FULL_PATH"
+echo "Saving package list to: $FULL_PATH with date: $CURRENT_DATE"
 pacman -Qe >"$FULL_PATH/$CURRENT_DATE-explicit-packages.txt"
 pacman -Q >"$FULL_PATH/$CURRENT_DATE-full-packages.txt"
+
+# TODO: Diff between package updates so I can see what changed
