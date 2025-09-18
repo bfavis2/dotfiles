@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 stow -d $HOME/dotfiles -t $HOME \
-  --verbose=2 \
+  --verbose=2 --adopt \
   --stow aliases \
   --stow backgrounds \
   --stow bash \
