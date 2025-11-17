@@ -6,4 +6,5 @@ yay -S --noconfirm --needed \
   pipewire wireplumber pipewire-pulse \
   sof-firmware pipewire-audio pipewire-alsa \
   alsa-mixer pipewire-docs \
-  calibre
+  calibre \
+  insomnia

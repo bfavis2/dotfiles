@@ -11,6 +11,7 @@ stow -d $HOME/dotfiles -t $HOME \
   --stow git \
   --stow hypr \
   --stow kitty \
+  --stow mise \
   --stow nvim-bfavis \
   --stow nvim-lazyvim \
   --stow scripts \

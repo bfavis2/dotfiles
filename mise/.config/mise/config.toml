@@ -1,0 +1,10 @@
+[settings]
+idiomatic_version_file_enable_tools = ["ruby"]
+
+[settings.ruby]
+
+[tools]
+go = "latest"
+java = "latest"
+node = "lts"
+python = "latest"
