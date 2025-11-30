@@ -7,4 +7,5 @@ yay -S --noconfirm --needed \
   sof-firmware pipewire-audio pipewire-alsa \
   alsa-mixer pipewire-docs \
   calibre \
-  insomnia
+  insomnia \
+  rider
