@@ -5,7 +5,8 @@ yay -S --noconfirm --needed \
   stow zellij \
   pipewire wireplumber pipewire-pulse \
   sof-firmware pipewire-audio pipewire-alsa \
-  alsa-mixer pipewire-docs \
+  pipewire-docs \
   calibre \
   insomnia \
-  rider
+  rider \
+  ticktick
