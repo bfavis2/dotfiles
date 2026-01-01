@@ -1,3 +1,6 @@
+# If not running interactively, don't do anything (leave this at the top of this file)
+[[ $- != *i* ]] && return
+
 # All the default Omarchy aliases and functions
 # (don't mess with these directly, just overwrite them here!)
 source ~/.local/share/omarchy/default/bash/rc
@@ -37,3 +40,5 @@ alias mkdir='mkdir -p'
 # if [ ! -f "$SSH_AUTH_SOCK" ]; then
 #     source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
 # fi
+
+. "$HOME/.local/share/../bin/env"

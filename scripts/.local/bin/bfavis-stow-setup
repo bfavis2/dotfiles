@@ -8,6 +8,7 @@ stow -d $HOME/dotfiles -t $HOME \
   --stow btop \
   --stow config-root \
   --stow fastfetch \
+  --stow ghostty \
   --stow git \
   --stow hypr \
   --stow kitty \
