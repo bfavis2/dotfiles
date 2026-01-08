@@ -25,10 +25,9 @@ map("n", "N", "Nzzzv")
 -- pastes the default buffer but prevents overwriting the buffer when pasting over something
 map("x", "<leader>p", [["_dP"]])
 
--- yank into system's clipboard
+-- yank/paste into system's clipboard
 map({ "n", "v" }, "<leader>y", [["+y]])
 map("n", "<leader>Y", [["+Y]])
-
 map({ "n", "v" }, "<leader>p", [["+p]])
 map("n", "<leader>P", [["+P]])
 

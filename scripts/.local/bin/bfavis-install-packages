@@ -9,4 +9,6 @@ yay -S --noconfirm --needed \
   calibre \
   insomnia \
   rider \
-  ticktick
+  ticktick \
+  tectonic \
+  ast-grep
