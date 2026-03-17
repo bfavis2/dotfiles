@@ -6,12 +6,12 @@ yay -S --noconfirm --needed \
   pipewire wireplumber pipewire-pulse \
   sof-firmware pipewire-audio pipewire-alsa \
   pipewire-docs \
-  insomnia \
   rider \
   ticktick \
   tectonic \
   ast-grep \
-  python-msgpack
+  python-msgpack \
+  bruno
 
 # install opencode
 echo "Installing OpenCode"
