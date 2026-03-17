@@ -15,6 +15,7 @@ stow -d $HOME/dotfiles -t $HOME \
   --stow mise \
   --stow nvim-bfavis \
   --stow nvim-lazyvim \
+  --stow nvim-min \
   --stow scripts \
   --stow starship \
   --stow uwsm \

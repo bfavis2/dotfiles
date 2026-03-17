@@ -5,10 +5,14 @@
 # (don't mess with these directly, just overwrite them here!)
 source ~/.local/share/omarchy/default/bash/rc
 
+# autostart zellij for all interactive shells
+# eval "$(zellij setup --generate-auto-start bash)"
+
 # alias nvim='NVIM_APPNAME="nvim-bfavis" \nvim'
 # alias nvim='NVIM_APPNAME="nvim-lazyvim" \nvim'
 alias nvim-bfavis='NVIM_APPNAME="nvim-bfavis" \nvim'
 alias nvim-lazy='NVIM_APPNAME="nvim-lazyvim" \nvim'
+alias nvim-min='NVIM_APPNAME="nvim-min" \nvim'
 
 # Directory navigation shortcuts
 alias ..='cd ..'
@@ -42,3 +46,6 @@ alias mkdir='mkdir -p'
 # fi
 
 . "$HOME/.local/share/../bin/env"
+
+# opencode
+export PATH=/home/bfavis/.opencode/bin:$PATH

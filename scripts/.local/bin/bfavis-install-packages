@@ -6,9 +6,16 @@ yay -S --noconfirm --needed \
   pipewire wireplumber pipewire-pulse \
   sof-firmware pipewire-audio pipewire-alsa \
   pipewire-docs \
-  calibre \
   insomnia \
   rider \
   ticktick \
   tectonic \
-  ast-grep
+  ast-grep \
+  python-msgpack
+
+# install opencode
+echo "Installing OpenCode"
+curl -fsSL https://opencode.ai/install | bash
+
+echo "Installing Calibre"
+sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin
