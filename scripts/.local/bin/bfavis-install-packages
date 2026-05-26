@@ -11,7 +11,8 @@ yay -S --noconfirm --needed \
   tectonic \
   ast-grep \
   python-msgpack \
-  bruno
+  bruno \
+  bob
 
 # install opencode
 echo "Installing OpenCode"
