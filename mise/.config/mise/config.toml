@@ -4,8 +4,11 @@ idiomatic_version_file_enable_tools = ["ruby"]
 [settings.ruby]
 
 [tools]
+codex = "latest"
 dotnet = "latest"
+gh = "latest"
 go = "latest"
 java = "latest"
 node = "lts"
+opencode = "latest"
 python = "latest"
