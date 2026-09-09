@@ -27,3 +27,13 @@
 -- o.bind("SUPER + SHIFT + S", nil, "omarchy-capture-screenshot")
 -- o.bind("SUPER + H", nil, "voxtype record toggle")
 -- o.bind("SUPER + PERIOD", nil, "omarchy-shell shell toggle omarchy.emojis")
+
+hl.unbind("SUPER + SHIFT + E") -- HEY email
+hl.unbind("SUPER + SHIFT + M") -- Spotify Music
+o.bind("SUPER + SHIFT + E", "Gmail", { webapp = "https://mail.google.com" })
+o.bind("SUPER + SHIFT + T", "TickTick", { launch = "ticktick" })
+o.bind(
+	"SUPER + SHIFT + M",
+	"Google Messages",
+	{ webapp = "https://messages.google.com/web/conversations", focus = true }
+)
