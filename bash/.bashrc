@@ -46,12 +46,33 @@ alias mkdir='mkdir -p'
 # PS1="\W \[\e]0;\w\a\]$PS1"
 
 # start ssh agent to cache pw
-eval "$(ssh-agent -s)"
-if ! pgrep -u "$USER" ssh-agent >/dev/null; then
-  ssh-agent -t 1h >"$XDG_RUNTIME_DIR/ssh-agent.env"
-fi
-if [ ! -f "$SSH_AUTH_SOCK" ]; then
-  source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
+# eval "$(ssh-agent -s)"
+# if ! pgrep -u "$USER" ssh-agent >/dev/null; then
+#   ssh-agent -t 1h >"$XDG_RUNTIME_DIR/ssh-agent.env"
+# fi
+# if [ ! -f "$SSH_AUTH_SOCK" ]; then
+#   source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
+# fi
+
+# improved ssh agent caching
+SSH_ENV="$XDG_RUNTIME_DIR/ssh-agent.env"
+[ -z "$XDG_RUNTIME_DIR" ] && SSH_ENV="$HOME/.ssh/environment"
+
+function start_agent {
+  echo "Initialising new SSH agent..."
+  /usr/bin/ssh-agent | sed 's/^echo/#echo/' >"${SSH_ENV}"
+  chmod 600 "${SSH_ENV}"
+  . "${SSH_ENV}" >/dev/null
+}
+
+if [ -f "${SSH_ENV}" ]; then
+  . "${SSH_ENV}" >/dev/null
+  # check if the stored PID is still interactive
+  ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent >/dev/null || {
+    start_agent
+  }
+else
+  start_agent
 fi
 
 . "$HOME/.local/share/../bin/env"

@@ -3,6 +3,9 @@ idiomatic_version_file_enable_tools = ["ruby"]
 
 [settings.ruby]
 
+[settings.upgrade]
+auto_prune = false
+
 [tools]
 codex = "latest"
 dotnet = "latest"
